@@ -13,7 +13,7 @@ var corsOptions = {
 
 
 const cors = {
-    origin: ["https://mobifi.io", "https://mobifi.info", "http://mobifitestsite.auto-deploy.s3-website.us-east-2.amazonaws.com"]
+    origin: ["https://mobifi.io", "https://mobifi.info", "http://amazonaws.com"]
 }
 
 app.use(express.json());
