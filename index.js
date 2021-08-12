@@ -6,7 +6,7 @@ const port = 5000;
 
 const SPLITBEEURL = 'https://notion-api.splitbee.io/v1/';
 
-var allowlist = ['https://mobifi.io', 'https://mobifi.info']
+var allowlist = ['https://mobifi.io', 'https://mobifi.info', 'http://localhost']
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions;
     if (allowlist.indexOf(req.header('Origin')) !== -1) {
