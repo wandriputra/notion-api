@@ -25,6 +25,6 @@ app.get('*', (req, res) => {
     return res.status(404).json({ msg: 'Error 404' });
 })
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
