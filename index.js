@@ -1,0 +1,30 @@
+const express = require('express');
+const axios = require('axios');
+const cors = require('cors')
+const app = express();
+const port = 4000;
+
+const SPLITBEEURL = 'https://notion-api.splitbee.io/v1/';
+
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(cors(corsOptions));
+
+app.get('/:type/:id', async (req, res) => {
+    const { params } = req;
+    const table = await axios.get(SPLITBEEURL + '/' + params.type + '/' + params.id);
+    return res.json(table.data);
+})
+
+app.get('*', (req, res) => {
+    return res.status(404).json({ msg: 'Error 404' });
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+})
