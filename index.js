@@ -6,20 +6,14 @@ const port = 5000;
 
 const SPLITBEEURL = 'https://notion-api.splitbee.io/v1/';
 
-var allowlist = ['https://mobifi.io', 'https://mobifi.info', 'http://localhost']
-var corsOptionsDelegate = function (req, callback) {
-    var corsOptions;
-    if (allowlist.indexOf(req.header('Origin')) !== -1) {
-        corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-    } else {
-        corsOptions = { origin: false } // disable CORS for this request
-    }
-    callback(null, corsOptions) // callback expects two parameters: error and options
+var corsOptions = {
+    origin: 'https://mobifi.info',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors(corsOptionsDelegate));
+app.use(cors(corsOptions));
 
 app.get('/:type/:id', async (req, res) => {
     const { params } = req;
