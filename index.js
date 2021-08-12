@@ -11,9 +11,22 @@ var corsOptions = {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
+
+const cors = {
+    origin: ["https://mobifi.io", "https://mobifi.info", "http://mobifitestsite.auto-deploy.s3-website.us-east-2.amazonaws.com"]
+}
+
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors(corsOptions));
+
+app.all('*', function (req, res, next) {
+    let origin = req.headers.origin;
+    if (cors.origin.indexOf(origin) >= 0) {
+        res.header("Access-Control-Allow-Origin", origin);
+    }
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.get('/:type/:id', async (req, res) => {
     const { params } = req;
