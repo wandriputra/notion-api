@@ -12,7 +12,7 @@ const SPLITBEEURL = 'https://notion-api.splitbee.io/v1/';
 // }
 
 const corsArr = {
-    origin: ["https://mobifi.io", "https://mobifi.info", "http://amazonaws.com"]
+    origin: ["https://mobifi.io", "https://mobifi.info", "http://mobifi.info.s3-website.eu-west-1.amazonaws.com"]
 }
 
 app.use(express.json());
