@@ -6,22 +6,22 @@ const port = 5000;
 
 const SPLITBEEURL = 'https://notion-api.splitbee.io/v1/';
 
-var corsOptions = {
-    origin: ["https://mobifi.io", "https://mobifi.info", "http://amazonaws.com"],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-
-// const cors = {
-//     origin: ["https://mobifi.io", "https://mobifi.info", "http://amazonaws.com"]
+// var corsOptions = {
+//     origin: ["https://mobifi.io", "https://mobifi.info", "http://amazonaws.com"],
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // }
+
+const corsArr = {
+    origin: ["https://mobifi.io", "https://mobifi.info", "http://amazonaws.com"]
+}
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 app.all('*', function (req, res, next) {
     let origin = req.headers.origin;
-    if (cors.origin.indexOf(origin) >= 0) {
+    if (corsArr.origin.indexOf(origin) >= 0) {
         res.header("Access-Control-Allow-Origin", origin);
     }
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
