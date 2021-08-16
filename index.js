@@ -23,7 +23,7 @@ const corsArr = {
 }
 
 app.all('*', function (req, res, next) {
-    let origin = req.headers.host;
+    let origin = req.headers.origin;
     console.log('this access  : ' + origin);
 
     if (corsArr.origin.indexOf(origin) >= 0) {
