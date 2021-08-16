@@ -24,7 +24,7 @@ const corsArr = {
 
 app.all('*', function (req, res, next) {
     let origin = req.headers.origin;
-    console.log('this access from : ' + origin);
+    console.log(`${req.method} from : ` + origin);
 
     // if (corsArr.origin.indexOf(origin) >= 0) {
     res.header("Access-Control-Allow-Origin", "https://mobifi.info");
@@ -32,10 +32,10 @@ app.all('*', function (req, res, next) {
     // res.header("Access-Control-Allow-Origin", "*");
     // }
     if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', '*');
+        res.header('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH');
         return res.status(200).json({});
     }
-    res.header("Access-Control-Allow-Headers", "*");
+    res.header("Access-Control-Allow-Headers", "*, Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
