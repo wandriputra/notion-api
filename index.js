@@ -8,7 +8,8 @@ const SPLITBEEURL = 'https://notion-api.splitbee.io/v1/';
 
 var corsOptions = {
     origin: "https://mobifi.info",
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204,
+    vary: 'Origin'
 }
 
 // const corsArr = {
