@@ -24,9 +24,9 @@ const corsArr = {
 
 app.all('*', function (req, res, next) {
     let origin = req.headers.origin;
-    if (corsArr.origin.indexOf(origin) >= 0) {
-        res.header("Access-Control-Allow-Origin", origin);
-    }
+    // if (corsArr.origin.indexOf(origin) >= 0) {
+    res.header("Access-Control-Allow-Origin", origin);
+    // }
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', '*');
         return res.status(200).json({});
