@@ -24,12 +24,12 @@ const corsArr = {
 
 app.all('*', function (req, res, next) {
     let origin = req.headers.origin;
-    console.log('this access  : ' + origin);
+    console.log('this access from : ' + origin);
 
-    if (corsArr.origin.indexOf(origin) >= 0) {
-        res.header("Access-Control-Allow-Origin", origin);
-        // res.header("Access-Control-Allow-Origin", "*");
-    }
+    // if (corsArr.origin.indexOf(origin) >= 0) {
+    res.header("Access-Control-Allow-Origin", "https://mobifi.info");
+    // res.header("Access-Control-Allow-Origin", "*");
+    // }
     if (req.method === 'OPTIONS') {
         res.header('Access-Control-Allow-Methods', '*');
         return res.status(200).json({});
