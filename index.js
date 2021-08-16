@@ -24,6 +24,7 @@ const corsArr = {
 
 app.all('*', function (req, res, next) {
     let origin = req.headers.origin;
+    console.log(req.method)
     console.log(`${req.method} from : ` + origin);
 
     // if (corsArr.origin.indexOf(origin) >= 0) {
