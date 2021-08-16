@@ -24,7 +24,11 @@ app.all('*', function (req, res, next) {
     if (corsArr.origin.indexOf(origin) >= 0) {
         res.header("Access-Control-Allow-Origin", origin);
     }
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH');
+        return res.status(200).json({});
+    }
+    res.header("Access-Control-Allow-Headers", "*, Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
