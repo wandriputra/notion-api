@@ -28,6 +28,7 @@ app.all('*', function (req, res, next) {
 
     // if (corsArr.origin.indexOf(origin) >= 0) {
     res.header("Access-Control-Allow-Origin", "https://mobifi.info");
+    res.header("Vary", "Origin");
     // res.header("Access-Control-Allow-Origin", "*");
     // }
     if (req.method === 'OPTIONS') {
@@ -35,7 +36,6 @@ app.all('*', function (req, res, next) {
         return res.status(200).json({});
     }
     res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Credentials", "true");
     next();
 });
 
