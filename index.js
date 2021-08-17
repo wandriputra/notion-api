@@ -27,7 +27,7 @@ app.all('*', function (req, res, next) {
     console.log(`${req.method} from : ` + origin);
 
     // if (corsArr.origin.indexOf(origin) >= 0) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "https://mobifi.info");
     res.header("Vary", "Origin");
     // res.header("Access-Control-Allow-Origin", "*");
     // }
